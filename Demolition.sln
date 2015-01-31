@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demolition", "Intermediate\ProjectFiles\Demolition.vcxproj", "{E4614653-8A96-4CE4-A6A4-CD8A161D6016}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DebugGame Editor|Windows = DebugGame Editor|Windows
+		DebugGame|Windows = DebugGame|Windows
+		Development Editor|Windows = Development Editor|Windows
+		Development|Windows = Development|Windows
+		Shipping|Windows = Shipping|Windows
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.DebugGame Editor|Windows.ActiveCfg = DebugGame_Editor|x64
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.DebugGame Editor|Windows.Build.0 = DebugGame_Editor|x64
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.DebugGame|Windows.ActiveCfg = DebugGame_Game|x64
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.DebugGame|Windows.Build.0 = DebugGame_Game|x64
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.Development Editor|Windows.ActiveCfg = Development_Editor|x64
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.Development Editor|Windows.Build.0 = Development_Editor|x64
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.Development|Windows.ActiveCfg = Development_Game|x64
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.Development|Windows.Build.0 = Development_Game|x64
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.Shipping|Windows.ActiveCfg = Shipping_Game|Win32
+		{E4614653-8A96-4CE4-A6A4-CD8A161D6016}.Shipping|Windows.Build.0 = Shipping_Game|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal

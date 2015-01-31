@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\Demolition.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{83F56239-FF30-4630-BF79-215BEA96B748}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\Demolition.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\DemolitionEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{90831E16-24B8-47AE-9E60-95670FACDD39}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\Demolition">
+			<UniqueIdentifier>{A751FBCA-C36E-4ADC-ABEA-DDA12F41DD35}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\Demolition\Demolition.Build.cs">
+			<Filter>Source\Demolition</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\Demolition\Demolition.cpp">
+			<Filter>Source\Demolition</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Demolition\Demolition.h">
+			<Filter>Source\Demolition</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Demolition\DemolitionGameMode.cpp">
+			<Filter>Source\Demolition</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Demolition\DemolitionGameMode.h">
+			<Filter>Source\Demolition</Filter>
+		</ClInclude >
+		<Filter Include="Source\Demolition\Resources">
+			<UniqueIdentifier>{81C60449-7ECB-4F00-A2AE-B44FA923D38F}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source\Demolition\Resources\Windows">
+			<UniqueIdentifier>{FCD83259-E814-4423-B27B-B4F75B4E045B}</UniqueIdentifier>
+		</Filter>
+		<ResourceCompile Include="..\..\Source\Demolition\Resources\Windows\Demolition.rc">
+			<Filter>Source\Demolition\Resources\Windows</Filter>
+		</ResourceCompile >
+	</ItemGroup>
+</Project>

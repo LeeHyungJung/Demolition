@@ -1,0 +1,10 @@
+﻿Build started 2015-02-10 오후 8:16:07.
+     1>Project "D:\Workspaces\ASDF_Studio\Demolition\Intermediate\ProjectFiles\Demolition.vcxproj" on node 2 (Clean target(s)).
+     1>CoreClean:
+         "D:\Program Files\Epic Games\4.6\Engine\Build\BatchFiles\Clean.bat" DemolitionEditor Win64 Development "D:\Workspaces\ASDF_Studio\Demolition\Demolition.uproject" -rocket
+         Cleaning DemolitionEditor Binaries...
+     1>Done Building Project "D:\Workspaces\ASDF_Studio\Demolition\Intermediate\ProjectFiles\Demolition.vcxproj" (Clean target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.27

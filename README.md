@@ -1,2 +1,0 @@
-# DemolitionCode
-ASDF Studio - DemolitionCode

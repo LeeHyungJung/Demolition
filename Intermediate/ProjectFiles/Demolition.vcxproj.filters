@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\Demolition.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{83F56239-FF30-4630-BF79-215BEA96B748}</UniqueIdentifier>
+			<UniqueIdentifier>{F1361D3C-E695-4988-864F-25A4807130BC}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\Demolition.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{90831E16-24B8-47AE-9E60-95670FACDD39}</UniqueIdentifier>
+			<UniqueIdentifier>{10B613C4-938C-46BA-9E30-EB22BEE6059C}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -21,29 +21,47 @@
 		<None Include="..\..\Config\DefaultEngine.ini">
 			<Filter>Config</Filter>
 		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
 		<Filter Include="Source\Demolition">
-			<UniqueIdentifier>{A751FBCA-C36E-4ADC-ABEA-DDA12F41DD35}</UniqueIdentifier>
+			<UniqueIdentifier>{2E50D7B1-087C-425C-8790-E11DC6ED0B05}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\Demolition\Demolition.Build.cs">
 			<Filter>Source\Demolition</Filter>
 		</None >
-		<ClCompile Include="..\..\Source\Demolition\Demolition.cpp">
-			<Filter>Source\Demolition</Filter>
+		<Filter Include="Source\Demolition\Private">
+			<UniqueIdentifier>{73C935D1-31A4-4F81-BB41-2A1650F48F46}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\Demolition\Private\Demolition.cpp">
+			<Filter>Source\Demolition\Private</Filter>
 		</ClCompile >
-		<ClInclude Include="..\..\Source\Demolition\Demolition.h">
-			<Filter>Source\Demolition</Filter>
+		<ClCompile Include="..\..\Source\Demolition\Private\DemolitionCharacter.cpp">
+			<Filter>Source\Demolition\Private</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\Demolition\Private\DemolitionGameMode.cpp">
+			<Filter>Source\Demolition\Private</Filter>
+		</ClCompile >
+		<Filter Include="Source\Demolition\Public">
+			<UniqueIdentifier>{1C74FD66-CA52-4263-ADF1-CB12FD5EE8AE}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\Demolition\Public\DemolitionCharacter.h">
+			<Filter>Source\Demolition\Public</Filter>
 		</ClInclude >
-		<ClCompile Include="..\..\Source\Demolition\DemolitionGameMode.cpp">
-			<Filter>Source\Demolition</Filter>
-		</ClCompile >
-		<ClInclude Include="..\..\Source\Demolition\DemolitionGameMode.h">
-			<Filter>Source\Demolition</Filter>
+		<ClInclude Include="..\..\Source\Demolition\Public\DemolitionGameMode.h">
+			<Filter>Source\Demolition\Public</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\Demolition\Public\DemolitionPrivate.h">
+			<Filter>Source\Demolition\Public</Filter>
 		</ClInclude >
 		<Filter Include="Source\Demolition\Resources">
-			<UniqueIdentifier>{81C60449-7ECB-4F00-A2AE-B44FA923D38F}</UniqueIdentifier>
+			<UniqueIdentifier>{41940827-AC41-4D9C-8E57-41F1A5F13B86}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Source\Demolition\Resources\Windows">
-			<UniqueIdentifier>{FCD83259-E814-4423-B27B-B4F75B4E045B}</UniqueIdentifier>
+			<UniqueIdentifier>{84E1AA7C-7FDF-42DD-AB17-87032B171338}</UniqueIdentifier>
 		</Filter>
 		<ResourceCompile Include="..\..\Source\Demolition\Resources\Windows\Demolition.rc">
 			<Filter>Source\Demolition\Resources\Windows</Filter>

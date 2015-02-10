@@ -334,7 +334,7 @@ D:\Program Files\Epic Games\4.6\Engine\Plugins\ScriptGeneratorPlugin\Source\Scri
 D:\Program Files\Epic Games\4.6\Engine\Plugins\ScriptPlugin\Source\ScriptEditorPlugin\ScriptEditorPlugin.Build.cs
 D:\Program Files\Epic Games\4.6\Engine\Plugins\ScriptPlugin\Source\ScriptPlugin\ScriptPlugin.Build.cs
 D:\Program Files\Epic Games\4.6\Engine\Plugins\Slate\SlateRemote\Source\SlateRemote\SlateRemote.Build.cs
-D:\Workspaces\Unreal Projects\Demolition\Source\Demolition\Demolition.Build.cs
+D:\Workspaces\ASDF_Studio\Demolition\Source\Demolition\Demolition.Build.cs
 D:\Program Files\Epic Games\4.6\Engine\Source\UE4Game.Target.cs
-D:\Workspaces\Unreal Projects\Demolition\Source\Demolition.Target.cs
-D:\Workspaces\Unreal Projects\Demolition\Source\DemolitionEditor.Target.cs
+D:\Workspaces\ASDF_Studio\Demolition\Source\Demolition.Target.cs
+D:\Workspaces\ASDF_Studio\Demolition\Source\DemolitionEditor.Target.cs

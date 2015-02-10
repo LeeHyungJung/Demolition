@@ -1,4 +1,14 @@
 Intermediate/Build/Win64/
 Binaries/
 Saved/
+*.sdf
+*.suo
+Intermediate/Build/*.pdb
+Build/Unused/
+*.bin
+*.pdb
+Intermediate/Build/BuildRules/DemolitionEditorModuleRules.pdb
+Intermediate/Build/Unused/Demolition.log
+Intermediate/CachedAssetRegistry.bin
 Demolition.sdf
+Demolition.v12.suo

@@ -8,3 +8,8 @@
 // Place any includes here that are needed by the majority of your .cpp files
 
 #include "EngineMinimal.h"
+#include "Game/Common/ConstID.h"
+
+
+typedef ConstID DmObjectAttrID;
+typedef ConstID DmObjectAttrValueID;

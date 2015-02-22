@@ -3,3 +3,9 @@
 #include "DemolitionPrivate.h"
 #include "DmObjectAttr.h"
 
+UDmObjectAttr::UDmObjectAttr(const class FObjectInitializer& ObjectInitializer)
+	:Super(ObjectInitializer)
+{
+
+
+}

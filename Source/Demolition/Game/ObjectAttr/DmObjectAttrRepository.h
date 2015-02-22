@@ -16,7 +16,7 @@ public:
 	virtual ~DmObjectAttrRepository();
 
 	void LoadScript(const FString string){};
-	void GetObjectAttr(DmObjectAttrID _InId, DmObjectAttr & _OutAttr){};
+	void GetObjectAttr(DmObjectAttrID _InId, UDmObjectAttr & _OutAttr){};
 /*	void GetAttr(DmObjectAttrValueID _InId, DmObjectAttr & _OutAttr){};*/
 private:
  /*	TMap<DmObjectAttrValueID, DmObjectAttrValue> AttrValue;

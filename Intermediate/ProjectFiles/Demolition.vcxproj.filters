@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Demolition.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{57177D72-FB84-41FB-B61E-2B9D206F399D}</UniqueIdentifier>
+      <UniqueIdentifier>{1F832C92-6444-43A2-8445-2946083C41DE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Demolition.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{DBDB5AC9-F299-48A4-9341-B5FBB7B04C42}</UniqueIdentifier>
+      <UniqueIdentifier>{F03E1B7B-B66E-4E23-9C44-A8745E0B9F41}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,16 +27,16 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Demolition">
-      <UniqueIdentifier>{AA1601E4-7B14-491C-8310-0139DDC9BF18}</UniqueIdentifier>
+      <UniqueIdentifier>{45E08D0D-6505-4610-A9EE-01EA4267F226}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Demolition\Demolition.Build.cs">
       <Filter>Source\Demolition</Filter>
     </None>
     <Filter Include="Source\Demolition\Game">
-      <UniqueIdentifier>{A1B05F43-91B3-4043-A4B8-17656748015A}</UniqueIdentifier>
+      <UniqueIdentifier>{C0C82C71-9BD7-44F6-AC1B-44C3DEE67455}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Demolition\Game\Common">
-      <UniqueIdentifier>{FF96B867-8C8E-40BF-8C32-B1CBBDBDBE1B}</UniqueIdentifier>
+      <UniqueIdentifier>{06D47A44-AFF0-45E2-A8D6-972BC3D372FC}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Demolition\Game\Common\ConstID.cpp">
       <Filter>Source\Demolition\Game\Common</Filter>
@@ -45,25 +45,43 @@
       <Filter>Source\Demolition\Game\Common</Filter>
     </ClInclude>
     <Filter Include="Source\Demolition\Game\Object">
-      <UniqueIdentifier>{72787C03-54DD-4377-BE5B-6979D6B5678C}</UniqueIdentifier>
+      <UniqueIdentifier>{A11CECF0-0D4B-43DA-B5A6-9AD339A1E11D}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Demolition\Game\ObjectAttr">
-      <UniqueIdentifier>{D37AD603-3E15-40C2-B284-A67BBC3A4D9E}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\Demolition\Game\ObjectAttr\DmObjectAttrRepository.cpp">
-      <Filter>Source\Demolition\Game\ObjectAttr</Filter>
+    <ClCompile Include="..\..\Source\Demolition\Game\Object\DmBaseObject.cpp">
+      <Filter>Source\Demolition\Game\Object</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Source\Demolition\Game\ObjectAttr\DmObjectAttrRepository.h">
-      <Filter>Source\Demolition\Game\ObjectAttr</Filter>
+    <ClInclude Include="..\..\Source\Demolition\Game\Object\DmBaseObject.h">
+      <Filter>Source\Demolition\Game\Object</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\Demolition\Game\ObjectAttr\DmObjectAttrValue.cpp">
-      <Filter>Source\Demolition\Game\ObjectAttr</Filter>
+    <ClCompile Include="..\..\Source\Demolition\Game\Object\SpawnVolum.cpp">
+      <Filter>Source\Demolition\Game\Object</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Source\Demolition\Game\ObjectAttr\DmObjectAttrValue.h">
-      <Filter>Source\Demolition\Game\ObjectAttr</Filter>
+    <ClInclude Include="..\..\Source\Demolition\Game\Object\SpawnVolum.h">
+      <Filter>Source\Demolition\Game\Object</Filter>
+    </ClInclude>
+    <Filter Include="Source\Demolition\Game\Object\Attr">
+      <UniqueIdentifier>{D20B685E-BC0A-4000-B943-DB9537871B16}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Demolition\Game\Object\Attr\DmObjectAttr.cpp">
+      <Filter>Source\Demolition\Game\Object\Attr</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Demolition\Game\Object\Attr\DmObjectAttr.h">
+      <Filter>Source\Demolition\Game\Object\Attr</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Demolition\Game\Object\Attr\DmObjectAttrRepository.cpp">
+      <Filter>Source\Demolition\Game\Object\Attr</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Demolition\Game\Object\Attr\DmObjectAttrRepository.h">
+      <Filter>Source\Demolition\Game\Object\Attr</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Demolition\Game\Object\Attr\DmObjectAttrValue.cpp">
+      <Filter>Source\Demolition\Game\Object\Attr</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Demolition\Game\Object\Attr\DmObjectAttrValue.h">
+      <Filter>Source\Demolition\Game\Object\Attr</Filter>
     </ClInclude>
     <Filter Include="Source\Demolition\Private">
-      <UniqueIdentifier>{7D08CB4C-9B45-4512-A1DF-75E7F262BF26}</UniqueIdentifier>
+      <UniqueIdentifier>{79C92CB3-BF79-41DD-B356-1872AE416C40}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Demolition\Private\Demolition.cpp">
       <Filter>Source\Demolition\Private</Filter>
@@ -75,7 +93,7 @@
       <Filter>Source\Demolition\Private</Filter>
     </ClCompile>
     <Filter Include="Source\Demolition\Public">
-      <UniqueIdentifier>{26CBD92A-FE26-4DAE-9F17-6F00D9135878}</UniqueIdentifier>
+      <UniqueIdentifier>{5913C14B-E7CA-4BBD-A5E9-C16EFAEA7DB5}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\Demolition\Public\DemolitionCharacter.h">
       <Filter>Source\Demolition\Public</Filter>
@@ -87,29 +105,46 @@
       <Filter>Source\Demolition\Public</Filter>
     </ClInclude>
     <Filter Include="Source\Demolition\Resources">
-      <UniqueIdentifier>{D98A72E1-CDD5-4980-A80B-A359DFC0E825}</UniqueIdentifier>
+      <UniqueIdentifier>{64B98BA6-DAF5-4FCD-8DBF-FE13D6F4F703}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Demolition\Resources\Windows">
-      <UniqueIdentifier>{7C6B8878-E8F5-4C16-8749-0C33C02F7EE4}</UniqueIdentifier>
+      <UniqueIdentifier>{ACE389F6-E477-4831-89E9-C62D729526D1}</UniqueIdentifier>
     </Filter>
     <ResourceCompile Include="..\..\Source\Demolition\Resources\Windows\Demolition.rc">
       <Filter>Source\Demolition\Resources\Windows</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Demolition\Game\Object\DmPaperTargetObject.h">
+    <ClInclude Include="..\..\Source\Demolition\Game\Object\DmObjectStacker.h">
       <Filter>Source\Demolition\Game\Object</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Demolition\Game\ObjectAttr\DmObjectAttr.h">
-      <Filter>Source\Demolition\Game\ObjectAttr</Filter>
+    <ClInclude Include="..\..\Source\Demolition\Game\Object\DmPaperBlockObject.h">
+      <Filter>Source\Demolition\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Demolition\Game\Object\DmPaperObject.h">
+      <Filter>Source\Demolition\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Demolition\Game\Helper\DmGamePlayStatic.h">
+      <Filter>Source\Demolition\Game\Helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Demolition\Game\Object\DmPaperTargetObject.cpp">
+    <ClCompile Include="..\..\Source\Demolition\Game\Object\DmObjectStacker.cpp">
       <Filter>Source\Demolition\Game\Object</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Demolition\Game\ObjectAttr\DmObjectAttr.cpp">
-      <Filter>Source\Demolition\Game\ObjectAttr</Filter>
+    <ClCompile Include="..\..\Source\Demolition\Game\Object\DmPaperBlockObject.cpp">
+      <Filter>Source\Demolition\Game\Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Demolition\Game\Object\DmPaperObject.cpp">
+      <Filter>Source\Demolition\Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Demolition\Game\Helper\DmGamePlayStatic.cpp">
+      <Filter>Source\Demolition\Game\Helper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source\Demolition\Game\Helper">
+      <UniqueIdentifier>{68376f66-fc11-4b6f-ba72-0ba823ac5a0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

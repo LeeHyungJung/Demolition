@@ -2,11 +2,12 @@
 
 #include "DemolitionPrivate.h"
 #include "DmBaseObject.h"
+#include "Game/Object/Attr/DmObjectAttr.h"
 
-ADmBaseObject::ADmBaseObject(const class FObjectInitializer& Initializer)
-	: Super(Initializer)
+ADmBaseObject::ADmBaseObject(const class FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
-
+	Attr = ObjectInitializer.CreateDefaultSubobject<UDmObjectAttr>(this, TEXT("Attr"));
 }
 
 

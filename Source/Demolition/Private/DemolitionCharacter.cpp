@@ -57,11 +57,12 @@ ADemolitionCharacter::ADemolitionCharacter(const FObjectInitializer& ObjectIniti
 
 	// Configure character movement
 	GetCharacterMovement()->GravityScale = 2.0f;
+/*
 	GetCharacterMovement()->AirControl = 0.80f;
 	GetCharacterMovement()->JumpZVelocity = 1000.f;
 	GetCharacterMovement()->GroundFriction = 3.0f;
 	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
-	GetCharacterMovement()->MaxFlySpeed = 600.0f;
+	GetCharacterMovement()->MaxFlySpeed = 600.0f;*/
 
 	// Lock character motion onto the XZ plane, so the character can't move in or out of the screen
 	GetCharacterMovement()->bConstrainToPlane = true;
@@ -107,6 +108,7 @@ void ADemolitionCharacter::SetupPlayerInputComponent(class UInputComponent* Inpu
 
 void ADemolitionCharacter::MoveRight(float Value)
 {
+/*
 	// Update animation to match the motion
 	UpdateAnimation();
 
@@ -124,7 +126,7 @@ void ADemolitionCharacter::MoveRight(float Value)
 	}
 
 	// Apply the input to the character motion
-	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value);
+	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value);*/
 }
 
 void ADemolitionCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)

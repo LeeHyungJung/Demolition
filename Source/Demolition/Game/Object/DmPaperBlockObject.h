@@ -3,13 +3,13 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "DmPaperObject.h"
+#include "DmBlockObject.h"
 #include "DmPaperBlockObject.generated.h"
 /**
  * 
  */
 UCLASS()
-class DEMOLITION_API ADmPaperBlockObject : public ADmPaperObject
+class DEMOLITION_API ADmPaperBlockObject : public ADmBlockObject
 {
 	GENERATED_UCLASS_BODY()
 	

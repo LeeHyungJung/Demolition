@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{49BB582A-A7EF-4D26-B591-368132B5EA08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{C7D87B42-DDAE-4998-BADA-CF299B07EB6D}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demolition", "Intermediate\ProjectFiles\Demolition.vcxproj", "{2BC33BF3-EC11-4A6D-AAB4-E36382686421}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UE4", "Intermediate\ProjectFiles\UE4.vcxproj", "{BA204405-547A-4724-A335-323450430F29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +43,22 @@ Global
 		{2BC33BF3-EC11-4A6D-AAB4-E36382686421}.Shipping|Android.Build.0 = Shipping_Game|Tegra-Android
 		{2BC33BF3-EC11-4A6D-AAB4-E36382686421}.Shipping|Windows.ActiveCfg = Shipping_Game|Win32
 		{2BC33BF3-EC11-4A6D-AAB4-E36382686421}.Shipping|Windows.Build.0 = Shipping_Game|Win32
+		{BA204405-547A-4724-A335-323450430F29}.DebugGame Editor|Android.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.DebugGame Editor|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.DebugGame|Android.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.DebugGame|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.Development Editor|Android.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.Development Editor|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.Development|Android.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.Development|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.Shipping|Android.ActiveCfg = BuiltWithUnrealBuildTool|Win32
+		{BA204405-547A-4724-A335-323450430F29}.Shipping|Windows.ActiveCfg = BuiltWithUnrealBuildTool|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{2BC33BF3-EC11-4A6D-AAB4-E36382686421} = {C7D87B42-DDAE-4998-BADA-CF299B07EB6D}
+		{BA204405-547A-4724-A335-323450430F29} = {49BB582A-A7EF-4D26-B591-368132B5EA08}
 	EndGlobalSection
 EndGlobal

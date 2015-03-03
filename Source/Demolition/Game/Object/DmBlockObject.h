@@ -13,11 +13,12 @@ class DEMOLITION_API ADmBlockObject : public ADmBaseObject
 {
 	GENERATED_UCLASS_BODY()
 
-	DEPRECATED_FORGAME(4.6, "CapsuleComponent should not be accessed directly, please use GetCapsuleComponent() function instead. CapsuleComponent will soon be private and your code will not compile.")
-	UPROPERTY(Category = Block, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	/** Name of the Box. */
+	static FName BoxComponentName;
+
+	UPROPERTY(Category = Box, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UBoxComponent* BoxComponent;
 
-	/** Name of the CapsuleComponent. */
-	static FName BoxComponentName;
-	
+	/** Returns Sprite subobject **/
+	FORCEINLINE class UBoxComponent* GetBox() const { return BoxComponent; }
 };

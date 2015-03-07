@@ -21,6 +21,19 @@ ADmBlockObject::ADmBlockObject(const class FObjectInitializer& ObjectInitializer
 	GetBox()->bCheckAsyncSceneOnMove = false;
 	GetBox()->bCanEverAffectNavigation = false;
 	GetBox()->SetSimulatePhysics(true);
+	GetBox()->SetEnableGravity(true);
+	
 	RootComponent = GetBox();
+
+	HP = 10;
 }
 
+void ADmBlockObject::OnTargeted_Implementation(const UDmObjectAttr * _Attr)
+{
+	HP--;
+
+	if (HP <= 0)
+	{
+		Destroy();
+	}
+}

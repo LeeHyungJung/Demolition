@@ -10,10 +10,21 @@ FName ADmPaperBlockObject::SpriteComponentName(TEXT("Sprite"));
 ADmPaperBlockObject::ADmPaperBlockObject(const class FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+	GetBox()->SetLockedAxis(ELockedAxis::Y);
+	
 	Sprite = ObjectInitializer.CreateDefaultSubobject<UPaperFlipbookComponent>(this, SpriteComponentName);
-	GetSprite()->SetSimulatePhysics(true);
-	GetSprite()->AttachTo(RootComponent);
+	Sprite->AlwaysLoadOnClient = true;
+	Sprite->AlwaysLoadOnServer = true;
+	Sprite->bOwnerNoSee = false;
+	Sprite->bAffectDynamicIndirectLighting = true;
+	Sprite->PrimaryComponentTick.TickGroup = TG_PrePhysics;
+	Sprite->AttachParent = GetBox();
+	static FName CollisionProfileName(UCollisionProfile::BlockAll_ProfileName);
+	Sprite->SetCollisionProfileName(CollisionProfileName);
+	Sprite->bGenerateOverlapEvents = false;
 
+	GetSprite()->AttachTo(RootComponent);
+	
 	// Setup the assets
 	struct FConstructorStatics
 	{
@@ -25,6 +36,7 @@ ADmPaperBlockObject::ADmPaperBlockObject(const class FObjectInitializer& ObjectI
 		{
 		}
 	};
+
 	static FConstructorStatics ConstructorStatics;
 
 	IdleAnimation = ConstructorStatics.IdleAnimationAsset.Get();

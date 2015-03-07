@@ -3,17 +3,15 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "DmBaseObject.h"
+#include "DmBasePawnObject.h"
 #include "DmObjectStacker.generated.h"
 /**
  * 
  */
 UCLASS()
-class DEMOLITION_API ADmObjectStacker : public ADmBaseObject
+class DEMOLITION_API ADmObjectStacker : public ADmBasePawnObject
 {
 	GENERATED_UCLASS_BODY()
 	
-	
-	
-	
+	void OnTargeted_Implementation(const UDmObjectAttr * _Attr) override;
 };

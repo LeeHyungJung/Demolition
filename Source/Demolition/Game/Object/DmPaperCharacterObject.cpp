@@ -1,15 +1,13 @@
-// Copyright 1998-2014 Epic Games, Inc. All Rights Reserved.
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "DemolitionPrivate.h"
-#include "DemolitionCharacter.h"
+#include "DmPaperCharacterObject.h"
 #include "PaperFlipbookComponent.h"
 #include "DemolitionGameMode.h"
 #include "Kismet/GameplayStatics.h"
 #include "Game/Object/DmBlockObject.h"
-//////////////////////////////////////////////////////////////////////////
-// ADemolitionCharacter
 
-ADemolitionCharacter::ADemolitionCharacter(const FObjectInitializer& ObjectInitializer)
+ADmPaperCharacterObject::ADmPaperCharacterObject(const class FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 	// Setup the assets
@@ -24,6 +22,7 @@ ADemolitionCharacter::ADemolitionCharacter(const FObjectInitializer& ObjectIniti
 		}
 	};
 	static FConstructorStatics ConstructorStatics;
+
 
 	RunningAnimation = ConstructorStatics.RunningAnimationAsset.Get();
 	IdleAnimation = ConstructorStatics.IdleAnimationAsset.Get();
@@ -55,8 +54,8 @@ ADemolitionCharacter::ADemolitionCharacter(const FObjectInitializer& ObjectIniti
 	// Prevent all automatic rotation behavior on the camera, character, and camera component
 	CameraBoom->bAbsoluteRotation = true;
 	SideViewCameraComponent->bUsePawnControlRotation = false;
-	GetCharacterMovement()->bOrientRotationToMovement = false;
-/*
+	GetMovement()->bOrientRotationToMovement = false;
+	/*
 
 	// Configure character movement
 	GetCharacterMovement()->GravityScale = 2.0f;
@@ -83,13 +82,9 @@ ADemolitionCharacter::ADemolitionCharacter(const FObjectInitializer& ObjectIniti
 	CollectionSphere = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("CollectionSphere"));
 	CollectionSphere->AttachTo(RootComponent);
 	CollectionSphere->SetSphereRadius(200.f);
-
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Animation
-
-void ADemolitionCharacter::UpdateAnimation()
+void ADmPaperCharacterObject::UpdateAnimation()
 {
 	const FVector PlayerVelocity = GetVelocity();
 	const float PlayerSpeed = PlayerVelocity.Size();
@@ -100,71 +95,27 @@ void ADemolitionCharacter::UpdateAnimation()
 	GetSprite()->SetFlipbook(DesiredAnimation);
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Input
-
-void ADemolitionCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+void ADmPaperCharacterObject::MoveRight(float Value)
 {
-	// Note: the 'Jump' action and the 'MoveRight' axis are bound to actual keys/buttons/sticks in DefaultInput.ini (editable from Project Settings..Input)
-	InputComponent->BindAction("Jump", IE_Pressed, this, &ADemolitionCharacter::Attack);
-	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
-	InputComponent->BindAxis("MoveRight", this, &ADemolitionCharacter::MoveRight);
 
-	InputComponent->BindTouch(IE_Pressed, this, &ADemolitionCharacter::TouchStarted);
-	InputComponent->BindTouch(IE_Released, this, &ADemolitionCharacter::TouchStopped);
 }
 
-void ADemolitionCharacter::MoveRight(float Value)
+void ADmPaperCharacterObject::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
-/*
-	// Update animation to match the motion
-	UpdateAnimation();
 
-	// Set the rotation so that the character faces his direction of travel.
-	if (Controller != nullptr)
-	{
-		if (Value < 0.0f)
-		{
-			Controller->SetControlRotation(FRotator(0.0, 180.0f, 0.0f));
-		}
-		else if (Value > 0.0f)
-		{
-			Controller->SetControlRotation(FRotator(0.0f, 0.0f, 0.0f));
-		}
-	}
-
-	// Apply the input to the character motion
-	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value);*/
 }
 
-void ADemolitionCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)
+void ADmPaperCharacterObject::TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
-	// jump on any touch
-	Attack();
+
 }
 
-void ADemolitionCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location)
+void ADmPaperCharacterObject::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
-	StopJumping();
+
 }
 
-void ADemolitionCharacter::Attack()
+void ADmPaperCharacterObject::Attack()
 {
-	TArray<AActor*> CollectedActors;
-	CollectionSphere->GetOverlappingActors(CollectedActors);
 
-
-
-	for (int32 iCollected = 0; iCollected < CollectedActors.Num(); ++iCollected)
-	{
-		// Cast the collected Actor to ABatteryPickup
-		ADmBlockObject* const TestBattery = Cast<ADmBlockObject>(CollectedActors[iCollected]);
-
-		//if the cast is successful, and the battery is valid and active 
-		if (TestBattery && !TestBattery->IsPendingKill())
-		{
-			TestBattery->OnTargeted(nullptr);
-			break;
-		}
-	}
 }

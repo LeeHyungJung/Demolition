@@ -3,8 +3,13 @@
 #include "DemolitionPrivate.h"
 #include "DmObjectStacker.h"
 
-ADmObjectStacker::ADmObjectStacker(const class FObjectInitializer& Initializer)
-	: Super(Initializer)
+ADmObjectStacker::ADmObjectStacker(const class FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+
+}
+
+void ADmObjectStacker::OnTargeted_Implementation(const UDmObjectAttr * Attr)
 {
 
 }

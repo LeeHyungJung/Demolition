@@ -1,24 +1,20 @@
-// Copyright 1998-2014 Epic Games, Inc. All Rights Reserved.
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
-#include "PaperCharacter.h"
-#include "DemolitionCharacter.generated.h"
-
-// This class is the default character for Demolition, and it is responsible for all
-// physical interaction between the player and the world.
-//
-//   The capsule component (inherited from ACharacter) handles collision with the world
-//   The CharacterMovementComponent (inherited from ACharacter) handles movement of the collision capsule
-//   The Sprite component (inherited from APaperCharacter) handles the visuals
-
-UCLASS(config=Game)
-class ADemolitionCharacter : public APaperCharacter
+#include "GameFramework/Actor.h"
+#include "DmBasePawnObject.h"
+#include "DmPaperCharacterObject.generated.h"
+/**
+ * 
+ */
+UCLASS(config = Game)
+class DEMOLITION_API ADmPaperCharacterObject : public ADmBasePawnObject
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 	/** Side view camera */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera, meta=(AllowPrivateAccess="true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* SideViewCameraComponent;
 
 	/** Camera boom positioning the camera beside the character */
@@ -27,7 +23,7 @@ class ADemolitionCharacter : public APaperCharacter
 
 protected:
 	// The animation to play while running around
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
 	class UPaperFlipbook* RunningAnimation;
 
 	// The animation to play while idle (standing still)
@@ -51,13 +47,10 @@ protected:
 	// End of APawn interface
 	void Attack();
 
-
 	/** Collection Volume */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Power)
 	class USphereComponent* CollectionSphere;
 public:
-	ADemolitionCharacter(const FObjectInitializer& ObjectInitializer);
-
 	/** Returns SideViewCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/

@@ -5,7 +5,7 @@
 #include "PaperFlipbookComponent.h"
 #include "DemolitionGameMode.h"
 #include "Kismet/GameplayStatics.h"
-#include "Game/Object/DmBlockObject.h"
+//#include "Game/Object/DmBlockObject.h"
 //////////////////////////////////////////////////////////////////////////
 // ADemolitionCharacter
 
@@ -37,6 +37,10 @@ ADemolitionCharacter::ADemolitionCharacter(const FObjectInitializer& ObjectIniti
 	// Set the size of our collision capsule.
 	GetCapsuleComponent()->SetCapsuleHalfHeight(96.0f);
 	GetCapsuleComponent()->SetCapsuleRadius(40.0f);
+	GetCapsuleComponent()->SetCollisionObjectType(COLLISION_PLAYERMOVEMENT);
+	GetCapsuleComponent()->SetCollisionResponseToChannel(COLLISION_BLOCK,ECollisionResponse::ECR_Ignore);
+	GetCapsuleComponent()->BodyInstance.SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics, true);
+
 
 	// Create a camera boom attached to the root (capsule)
 	CameraBoom = ObjectInitializer.CreateDefaultSubobject<USpringArmComponent>(this, TEXT("CameraBoom"));
@@ -53,9 +57,10 @@ ADemolitionCharacter::ADemolitionCharacter(const FObjectInitializer& ObjectIniti
 	SideViewCameraComponent->AttachTo(CameraBoom, USpringArmComponent::SocketName);
 
 	// Prevent all automatic rotation behavior on the camera, character, and camera component
-	CameraBoom->bAbsoluteRotation = true;
+	CameraBoom->bAbsoluteRotation = false;
 	SideViewCameraComponent->bUsePawnControlRotation = false;
 	GetCharacterMovement()->bOrientRotationToMovement = false;
+
 /*
 
 	// Configure character movement
@@ -116,7 +121,6 @@ void ADemolitionCharacter::SetupPlayerInputComponent(class UInputComponent* Inpu
 
 void ADemolitionCharacter::MoveRight(float Value)
 {
-/*
 	// Update animation to match the motion
 	UpdateAnimation();
 
@@ -134,7 +138,9 @@ void ADemolitionCharacter::MoveRight(float Value)
 	}
 
 	// Apply the input to the character motion
-	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value);*/
+	AddMovementInput(FVector(1.0f, 0.0f, 0.0f), Value);
+
+
 }
 
 void ADemolitionCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)
@@ -157,6 +163,7 @@ void ADemolitionCharacter::Attack()
 
 	for (int32 iCollected = 0; iCollected < CollectedActors.Num(); ++iCollected)
 	{
+/*
 		// Cast the collected Actor to ABatteryPickup
 		ADmBlockObject* const TestBattery = Cast<ADmBlockObject>(CollectedActors[iCollected]);
 
@@ -165,6 +172,6 @@ void ADemolitionCharacter::Attack()
 		{
 			TestBattery->OnTargeted(nullptr);
 			break;
-		}
+		}*/
 	}
 }

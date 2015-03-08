@@ -3,4 +3,4 @@
 #include "DemolitionPrivate.h"
 
 IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, Demolition, "Demolition" );
- 
+DEFINE_LOG_CATEGORY(TEST);

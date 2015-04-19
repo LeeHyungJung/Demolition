@@ -4,7 +4,8 @@
 #include "DemolitionObject.generated.h"
 
 
-#define DEMOLITION_POS_Y -10
+#define DEMOLITION_POS_Y -20
+#define DEMOLITION_GROUND_POS_Y -20
 
 class UBoxComponent;
 
@@ -23,6 +24,9 @@ class ADemolitionObject : public AActor
 
 	UFUNCTION(BlueprintCallable, Category = DemolitionObject)
 	bool IsFalling();
+
+	UFUNCTION(BlueprintNativeEvent, Category = DemolitionObject)
+	void OnProcDemolition(float DeltaSeconds);
 
 	UFUNCTION(BlueprintCallable, Category = DemolitionObject)
 	void setApplyFallingAttr(bool bFallingAttr);
@@ -44,7 +48,7 @@ class ADemolitionObject : public AActor
 protected:
 	virtual void initBaseCollisionComponent(const FObjectInitializer& ObjectInitializer);
 	virtual void applyFalling(float DeltaSeconds);
-	float getEleapsedTime();
+	float getFallingTime();
 
 protected:
 	/** Simple collision primitive to use as the root component. */
@@ -60,6 +64,13 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = DemolitionObject)
 	bool bBeginDemolition;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = DemolitionObject)
+	float DemolitionTime;
+
+	float CurDemolitionTime;
+
 	float FallingTime;
+
+	bool bFalling;
 };
 

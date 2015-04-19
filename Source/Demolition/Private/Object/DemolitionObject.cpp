@@ -10,8 +10,11 @@ ADemolitionObject::ADemolitionObject(const FObjectInitializer& ObjectInitializer
 	bBeginDemolition = false;
 	bApplyFallingAttr = false;
 
+	DemolitionTime = 0.0f;
 	FallingTime = 0.0f;
 	PrimaryActorTick.bCanEverTick = true;
+
+	bFalling = true;
 
 	initBaseCollisionComponent(ObjectInitializer);
 }
@@ -25,8 +28,7 @@ void ADemolitionObject::initBaseCollisionComponent(const FObjectInitializer& Obj
 	BaseCollisionComponent->SetLockedAxis(ELockedAxis::Y);
 
 	FVector CurrentLocation = GetActorLocation();
-	CurrentLocation.Y = DEMOLITION_POS_Y;
-
+	
 	RootComponent = BaseCollisionComponent;
 }
 
@@ -35,6 +37,7 @@ void ADemolitionObject::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	OnUpdateMovement(DeltaSeconds);
+	OnProcDemolition(DeltaSeconds);
 }
 
 void ADemolitionObject::OnUpdateMovement_Implementation(float DeltaSeconds)
@@ -52,7 +55,7 @@ bool ADemolitionObject::IsApplyFallingAttr()
 
 bool ADemolitionObject::IsFalling()
 {
-	return FallingTime > 0.f ? true : false;
+	return bFalling;
 }
 
 void ADemolitionObject::setApplyFallingAttr(bool bFallingAttr)
@@ -66,12 +69,13 @@ void ADemolitionObject::applyFalling(float DeltaSeconds)
 
 	FVector CurrentLocation = GetActorLocation();
 	CurrentLocation.Z += DeltaSeconds * (FallingTime * GetWorld()->GetGravityZ());
+	CurrentLocation.Y = DEMOLITION_POS_Y;
+
 	FHitResult HitResult;
 
 	if (SetActorLocation(CurrentLocation, true, &HitResult) == false)
 	{
-		bApply = false;
-		//OnBeginDemolition();
+		
 		// If the set function returned false something is blocking at that location. We can interrogate this result to determine details of this  
 		// @See FHitResult for more information  
 		if (HitResult.GetActor() != nullptr)
@@ -80,9 +84,33 @@ void ADemolitionObject::applyFalling(float DeltaSeconds)
 
 			if (HitActor)
 			{
+				bFalling = true;
+				SetActorLocation(CurrentLocation, false, &HitResult);
+				
+			}
+			else
+			{
+				bFalling = false;
+				bApply = false;
+			}
+
+			ADemolitionObject * const HitDemolitionObject = Cast<ADemolitionObject>(HitResult.GetActor());
+
+			if (HitDemolitionObject && HitDemolitionObject->IsFalling() )
+			{
+				bFalling = true;
 				SetActorLocation(CurrentLocation, false, &HitResult);
 			}
+			else
+			{
+				bFalling = false;
+				bApply = false;
+			}
 		}
+	}
+	else
+	{
+		bFalling = true;
 	}
 
 	if (bApply)
@@ -90,6 +118,15 @@ void ADemolitionObject::applyFalling(float DeltaSeconds)
 		FallingTime += DeltaSeconds;
 	}
 }
+
+
+void ADemolitionObject::OnProcDemolition_Implementation(float DeltaSeconds)
+{
+	if (bBeginDemolition == false) return;
+
+	CurDemolitionTime += DeltaSeconds;
+}
+
 
 void ADemolitionObject::OnAttacked_Implementation(float Damage)
 {
@@ -105,7 +142,7 @@ void ADemolitionObject::OnBeginDemolition_Implementation()
 	bBeginDemolition = true;
 }
 
-float ADemolitionObject::getEleapsedTime()
+float ADemolitionObject::getFallingTime()
 {
 	return FallingTime;
 }
@@ -119,6 +156,7 @@ float ADemolitionObject::getHP()
 {
 	return HP;
 }
+
 
 
 

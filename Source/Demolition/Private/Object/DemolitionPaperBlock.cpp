@@ -13,7 +13,7 @@ ADemolitionPaperBlock::ADemolitionPaperBlock(const FObjectInitializer& ObjectIni
 
 void ADemolitionPaperBlock::CollisionSetup()
 {
-	GetBaseColisionBox()->InitBoxExtent(FVector(30.f, 30.f, 30.f));
+	GetBaseColisionBox()->InitBoxExtent(FVector(30.f, 30.f, 90.f));
 	GetBaseColisionBox()->SetCollisionProfileName("Custom");
 	GetBaseColisionBox()->SetCollisionObjectType(COLLISION_BLOCK);
 	GetBaseColisionBox()->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Block);
@@ -37,6 +37,7 @@ void ADemolitionPaperBlock::initSprite(const FObjectInitializer& ObjectInitializ
 
 	static FConstructorStatics ConstructorStatics;
 	IdleAnimation = ConstructorStatics.IdleAnimationAsset.Get();
+
 	DemolitionAnimation = ConstructorStatics.DemolitionAnimationAsset.Get();
 	Sprite = ObjectInitializer.CreateDefaultSubobject<UPaperFlipbookComponent>(this, "SpriteComponent");
 	Sprite->AttachTo(GetBaseColisionBox());

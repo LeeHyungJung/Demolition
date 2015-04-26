@@ -48,7 +48,7 @@ public:
 
 	void GetChildList(TArray<CLinkedNode<T> *> & list)
 	{
-		ALinkedListNode * tempChild = GetChildNode();
+		CLinkedNode<T> * tempChild = GetChildNode();
 		while (tempChild != nullptr)
 		{
 			list.Add(tempChild);

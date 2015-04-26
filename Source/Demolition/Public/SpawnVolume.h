@@ -15,7 +15,7 @@ public:
 	class UBoxComponent * WhereToSpawn;
 
 	UPROPERTY(EditAnywhere, Category = Spawning)
-	TSubclassOf<class ALinkedListNode> WhatToSpawn;
+	TSubclassOf<class AActor> WhatToSpawn;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Spawning)
 	float SpawnDelayRangeLow;
@@ -24,7 +24,7 @@ public:
 	float SpawnDelayRangeHigh;
 	
 	UPROPERTY(EditAnywhere, Category = Spawning)
-	class AWorker * Receiver;
+	TScriptInterface<class IObjectGenerateListener> Receiver;
 
 private:
 

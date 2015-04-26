@@ -3,12 +3,14 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "Private/INodeGenerateListener.h"
 #include <queue>
+#include "Private/ObjectGenerateListener.h"
+#include "private/ClickEventListener.h"
+#include "LinkedWork.h"
 #include "Worker.generated.h"
 
 UCLASS()
-class DEMOLITION_API AWorker : public AActor, public INodeGenerateListener
+class DEMOLITION_API AWorker : public AActor, public IObjectGenerateListener, public IClickEventListener
 {
 	GENERATED_BODY()
 
@@ -26,11 +28,26 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	virtual void OnCreatedNode(ALinkedListNode * node) override;
+	virtual void OnCreatedNode(AActor * node) override;
+
+	virtual void OnClick(class UPrimitiveComponent * Comp) override;
+
+	virtual void OnInputTouchBegin(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp) override;
+
+	virtual void OnInputTouchEnd(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp) override;
 
 	UFUNCTION(BlueprintNativeEvent)
-	void OnAddedWork(ALinkedListNode * node);
+	void OnAddedWork(ALinkedWork * node);
+
+	void OnAddedWork_Implementation(ALinkedWork * node);
+
+	UFUNCTION(BlueprintNativeEvent)
+	void OnStackedWork(ALinkedWork * node);
+
+	void OnStackedWork_Implementation(ALinkedWork * node);
+
+
 
 private:
-	std::queue<ALinkedListNode *> QueNodes;
+	std::queue<ALinkedWork *> QueNodes;
 };

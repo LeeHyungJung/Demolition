@@ -3,8 +3,7 @@
 #include "Demolition.h"
 #include "SpawnVolume.h"
 #include "UnrealMathUtility.h"
-#include "LinkedListNode.h"
-#include "Worker.h"
+#include "private/ObjectGenerateListener.h"
 
 // Sets default values
 ASpawnVolume::ASpawnVolume()
@@ -81,12 +80,8 @@ void ASpawnVolume::SpawnLinkedNode()
 
 			FRotator SpawnRotation = FRotator::ZeroRotator;
 			
-			static int index = 0;
-			
-			ALinkedListNode* const SpawnedLinkedNode = World->SpawnActor<ALinkedListNode>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
-			SpawnedLinkedNode->NodeIndex = index;
-
-			index++;
+			// 이것도 나중에 빼자 컴퍼넌트로 받아오기
+			AActor* const SpawnedLinkedNode = World->SpawnActor<AActor>(WhatToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
 
 			if (Receiver != nullptr)
 			{

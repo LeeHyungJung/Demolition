@@ -14,6 +14,7 @@ class DEMOLITION_API ADemolitionGameMode : public AGameMode
 	GENERATED_BODY()
 	
 	
-	
+public:
+	ADemolitionGameMode(const FObjectInitializer& ObjectInitializer);
 	
 };

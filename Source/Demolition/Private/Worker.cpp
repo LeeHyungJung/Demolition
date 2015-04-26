@@ -2,7 +2,8 @@
 
 #include "Demolition.h"
 #include "Worker.h"
-
+#include "Components/PrimitiveComponent.h"
+#include "InputCoreTypes.h"
 
 // Sets default values
 AWorker::AWorker()
@@ -31,13 +32,53 @@ void AWorker::Tick( float DeltaTime )
 
 }
 
-void AWorker::OnCreatedNode(ALinkedListNode * node)
+void AWorker::OnCreatedNode(AActor * node)
 {
-	OnAddedWork(node);
+	ALinkedWork * work = Cast<ALinkedWork>(node);
+
+	if (work != nullptr)
+	{
+		OnAddedWork(work);
+	}
 }
 
-void AWorker::OnAddedWork_Implementation(ALinkedListNode * node)
+void AWorker::OnClick(UPrimitiveComponent * Comp)
 {
+	UE_LOG(LogTemp, Warning, TEXT("Work clicked"));
+}
+
+void AWorker::OnInputTouchBegin(const ETouchIndex::Type FingerIndex, UPrimitiveComponent * Comp)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Work Touch Begin"));
+}
+
+void AWorker::OnInputTouchEnd(const ETouchIndex::Type FingerIndex, UPrimitiveComponent * Comp)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Work Touch End"));
+	
+	if (QueNodes.empty()) return;
+
+	ALinkedWork * work = QueNodes.front();
+	
+	if (work != nullptr && work->BaseCollisionComponent->GetComponentVelocity().IsZero())
+	{
+		work->Destroy();
+		QueNodes.pop();
+	}
+}
+
+void AWorker::OnAddedWork_Implementation(ALinkedWork * node)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Add Work"));
 	QueNodes.push(node);
 }
+
+void AWorker::OnStackedWork_Implementation(ALinkedWork * node)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Work Stacked"));
+}
+
+
+
+
 

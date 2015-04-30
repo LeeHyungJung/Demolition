@@ -44,27 +44,19 @@ void AWorker::OnCreatedNode(AActor * node)
 
 void AWorker::OnClick(UPrimitiveComponent * Comp)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Work clicked"));
+
 }
 
-void AWorker::OnInputTouchBegin(const ETouchIndex::Type FingerIndex, UPrimitiveComponent * Comp)
+void AWorker::OnInputTouchBeginTest_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Work Touch Begin"));
+	
 }
 
-void AWorker::OnInputTouchEnd(const ETouchIndex::Type FingerIndex, UPrimitiveComponent * Comp)
+void AWorker::OnInputTouchEndTest_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Work Touch End"));
-	
-	if (QueNodes.empty()) return;
-
-	ALinkedWork * work = QueNodes.front();
-	
-	if (work != nullptr && work->BaseCollisionComponent->GetComponentVelocity().IsZero())
-	{
-		work->Destroy();
-		QueNodes.pop();
-	}
+	removeWorkProc();
+	return;
 }
 
 void AWorker::OnAddedWork_Implementation(ALinkedWork * node)
@@ -77,6 +69,23 @@ void AWorker::OnStackedWork_Implementation(ALinkedWork * node)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Work Stacked"));
 }
+
+void AWorker::removeWorkProc()
+{
+	if (QueNodes.empty()) return;
+
+	ALinkedWork * work = QueNodes.front();
+
+	if (work != nullptr)
+	{
+		work->Destroy();
+		QueNodes.pop();
+	}
+}
+
+
+
+
 
 
 

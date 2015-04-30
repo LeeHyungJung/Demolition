@@ -32,9 +32,15 @@ public:
 
 	virtual void OnClick(class UPrimitiveComponent * Comp) override;
 
-	virtual void OnInputTouchBegin(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp) override;
+	UFUNCTION(BlueprintNativeEvent)
+	void OnInputTouchBeginTest(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
-	virtual void OnInputTouchEnd(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp) override;
+	void OnInputTouchBeginTest_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+
+	UFUNCTION(BlueprintNativeEvent)
+	void OnInputTouchEndTest(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+
+	void OnInputTouchEndTest_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
 	UFUNCTION(BlueprintNativeEvent)
 	void OnAddedWork(ALinkedWork * node);
@@ -46,7 +52,8 @@ public:
 
 	void OnStackedWork_Implementation(ALinkedWork * node);
 
-
+private:
+	void removeWorkProc();
 
 private:
 	std::queue<ALinkedWork *> QueNodes;

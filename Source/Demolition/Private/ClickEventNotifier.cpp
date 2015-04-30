@@ -51,7 +51,7 @@ void AClickEventNotifier::OnInputTouchBegin(const ETouchIndex::Type FingerIndex,
 	if (Receiver != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("touchBegin"));
-		Receiver->OnInputTouchBegin(FingerIndex, Comp);
+		Receiver->OnInputTouchBeginTest(FingerIndex, Comp);
 	}
 }
 
@@ -60,7 +60,7 @@ void AClickEventNotifier::OnInputTouchEnd(const ETouchIndex::Type FingerIndex, c
 	if (Receiver != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("touchEnd"));
-		Receiver->OnInputTouchEnd(FingerIndex, Comp);
+		Receiver->OnInputTouchEndTest(FingerIndex, Comp);
 	}
 }
 

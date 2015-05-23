@@ -33,14 +33,14 @@ public:
 	virtual void OnClick(class UPrimitiveComponent * Comp) override;
 
 	UFUNCTION(BlueprintNativeEvent)
-	void OnInputTouchBeginTest(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+	void OnWorkerInputTouchBegin(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
-	void OnInputTouchBeginTest_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+	void OnWorkerInputTouchBegin_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
 	UFUNCTION(BlueprintNativeEvent)
-	void OnInputTouchEndTest(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+	void OnWorkerInputTouchEnd(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
-	void OnInputTouchEndTest_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+	void OnWorkerInputTouchEnd_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
 	UFUNCTION(BlueprintNativeEvent)
 	void OnAddedWork(ALinkedWork * node);

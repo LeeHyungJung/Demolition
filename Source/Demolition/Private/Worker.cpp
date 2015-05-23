@@ -47,12 +47,12 @@ void AWorker::OnClick(UPrimitiveComponent * Comp)
 
 }
 
-void AWorker::OnInputTouchBeginTest_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp)
+void AWorker::OnWorkerInputTouchBegin_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp)
 {
 	
 }
 
-void AWorker::OnInputTouchEndTest_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp)
+void AWorker::OnWorkerInputTouchEnd_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Work Touch End"));
 	removeWorkProc();

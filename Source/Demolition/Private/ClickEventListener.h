@@ -19,7 +19,7 @@ class IClickEventListener
 
 	virtual void OnClick(class UPrimitiveComponent * Comp) = 0;
 
-	virtual void OnInputTouchBeginTest(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp) = 0;
+	virtual void OnWorkerInputTouchBegin(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp) = 0;
 
-	virtual void OnInputTouchEndTest(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp) = 0;
+	virtual void OnWorkerInputTouchEnd(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp) = 0;
 };

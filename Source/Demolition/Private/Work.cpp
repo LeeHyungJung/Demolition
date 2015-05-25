@@ -1,64 +1,78 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Demolition.h"
-#include "LinkedWork.h"
+#include "Work.h"
 #include "Worker.h"
+#include "DemolitionObjectProperty.h"
 
 
 // Sets default values
-ALinkedWork::ALinkedWork()
+AWork::AWork()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	Properies = CreateOptionalDefaultSubobject<UDemolitionObjectProperty>(TEXT("DemolitionProperties"));
-	
 	setContent(this);
+
+	DmProperties = CreateOptionalDefaultSubobject<UDemolitionObjectProperty>(TEXT("DmProperties"), true);
+
+	DmProperties->AttachTo(RootComponent);
 
 	BaseCollisionComponent = CreateOptionalDefaultSubobject<UBoxComponent>(TEXT("BaseBoxComponent"));
 
 	BaseCollisionComponent->SetCollisionProfileName("BlockAll");
+
 	BaseCollisionComponent->SetSimulatePhysics(true);
 
 	TriggerBox = CreateOptionalDefaultSubobject<UBoxComponent>(TEXT("TriggerBox"));
 
 	TriggerBox->SetCollisionProfileName("OverlapAllDynamic");
-	TriggerBox->OnComponentBeginOverlap.AddDynamic(this, &ALinkedWork::OnBeginOverlap);
-	TriggerBox->OnComponentEndOverlap.AddDynamic(this, &ALinkedWork::OnOverlapEnd);
+
+	TriggerBox->OnComponentBeginOverlap.AddDynamic(this, &AWork::OnBeginOverlap);
+
+	TriggerBox->OnComponentEndOverlap.AddDynamic(this, &AWork::OnOverlapEnd);
 
 	RootComponent = BaseCollisionComponent;
 
 	TriggerBox->AttachTo(RootComponent);
 
 	ParentNode = nullptr;
+
 	ChildNode = nullptr;
 
+	
+
 	static int32 index = 0;
+
 	NodeIndex = index;
+
 	++index;
+
 }
 
 // Called when the game starts or when spawned
-void ALinkedWork::BeginPlay()
+void AWork::BeginPlay()
 {
 	Super::BeginPlay();
+
+	
 }
 
 // Called every frame
-void ALinkedWork::Tick( float DeltaTime )
+void AWork::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
 }
 
-bool ALinkedWork::CheckCanBeChild(ALinkedWork * node)
+bool AWork::CheckCanBeChild(AWork * node)
 {
 	return NodeIndex < node->NodeIndex ? true : false;
 }
 
-ALinkedWork * ALinkedWork::GetChildWork()
+AWork * AWork::GetChildWork()
 {
-	CLinkedNode<ALinkedWork> * node = GetChildNode();
+	CLinkedNode<AWork> * node = GetChildNode();
 
 	if (node != nullptr)
 	{
@@ -69,7 +83,7 @@ ALinkedWork * ALinkedWork::GetChildWork()
 }
 
 
-void ALinkedWork::NotiyToRoot(ALinkedWork * node)
+void AWork::NotiyToRoot(AWork * node)
 {
 	if (bHead && WorkOwner != nullptr)
 	{
@@ -82,9 +96,9 @@ void ALinkedWork::NotiyToRoot(ALinkedWork * node)
 }
 
 
-void ALinkedWork::OnBeginOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+void AWork::OnBeginOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	ALinkedWork * OtherNode = Cast<ALinkedWork>(OtherActor);
+	AWork * OtherNode = Cast<AWork>(OtherActor);
 
 	if (OtherNode != nullptr && (OtherNode != this))
 	{
@@ -114,9 +128,9 @@ void ALinkedWork::OnBeginOverlap(class AActor* OtherActor, class UPrimitiveCompo
 	}
 }
 
-void ALinkedWork::OnOverlapEnd(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void AWork::OnOverlapEnd(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	ALinkedWork * OtherNode = Cast<ALinkedWork>(OtherActor);
+	AWork * OtherNode = Cast<AWork>(OtherActor);
 
 	if (OtherNode != nullptr && (OtherNode != this) && OtherNode->GetParentNode() == nullptr)
 	{
@@ -132,7 +146,7 @@ void ALinkedWork::OnOverlapEnd(class AActor* OtherActor, class UPrimitiveCompone
 	}
 }
 
-void ALinkedWork::Destroyed()
+void AWork::Destroyed()
 {
 	if (ParentNode != nullptr)
 	{
@@ -146,10 +160,20 @@ void ALinkedWork::Destroyed()
 	}
 }
 
-int32 ALinkedWork::GetIndex()
+int32 AWork::GetIndex()
 {
 	return NodeIndex;
 }
 
+void AWork::OnBeWorked_Implementation(UDemolitionObjectProperty * Properties)
+{
+	if (this->DmProperties == nullptr) return;
 
+	this->DmProperties->HP -= Properties->POWER;
+}
+
+UDemolitionObjectProperty * AWork::GetDmProperties()
+{
+	return DmProperties;
+}
 

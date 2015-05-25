@@ -41,7 +41,7 @@ void ASpawnVolume::Tick( float DeltaTime )
 
 	if (bShouldSpawn)
 	{
-		SpawnLinkedNode();
+		SpawnActor();
 
 		SpawnTime -= SpawnDelay;
 
@@ -65,7 +65,7 @@ float ASpawnVolume::GetRandomSpawnDelay()
 	return FMath::FRandRange(SpawnDelayRangeLow, SpawnDelayRangeHigh);
 }
 
-void ASpawnVolume::SpawnLinkedNode()
+void ASpawnVolume::SpawnActor()
 {
 	if (WhatToSpawn != NULL)
 	{

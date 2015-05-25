@@ -51,5 +51,5 @@ public:
 private:
 	float GetRandomSpawnDelay();
 	
-	void SpawnLinkedNode();
+	void SpawnActor();
 };

@@ -6,8 +6,9 @@
 #include <queue>
 #include "Private/ObjectGenerateListener.h"
 #include "private/ClickEventListener.h"
-#include "LinkedWork.h"
 #include "Worker.generated.h"
+
+class AWork;
 
 UCLASS()
 class DEMOLITION_API AWorker : public AActor, public IObjectGenerateListener, public IClickEventListener
@@ -18,6 +19,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = LinkedList)
 	class UBoxComponent * BaseCollisionComponent;
 	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Demolition)
+	class UDemolitionObjectProperty * DmProperties;
 public:	
 	// Sets default values for this actor's properties
 	AWorker();
@@ -35,26 +38,28 @@ public:
 	UFUNCTION(BlueprintNativeEvent)
 	void OnWorkerInputTouchBegin(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
-	void OnWorkerInputTouchBegin_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+	virtual void OnWorkerInputTouchBegin_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
 	UFUNCTION(BlueprintNativeEvent)
 	void OnWorkerInputTouchEnd(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
 
-	void OnWorkerInputTouchEnd_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+	virtual void OnWorkerInputTouchEnd_Implementation(const ETouchIndex::Type FingerIndex, class UPrimitiveComponent * Comp);
+
+	void doWork();
 
 	UFUNCTION(BlueprintNativeEvent)
-	void OnAddedWork(ALinkedWork * node);
+	void OnAddedWork(AWork * node);
 
-	void OnAddedWork_Implementation(ALinkedWork * node);
+	virtual void OnAddedWork_Implementation(AWork * node);
 
 	UFUNCTION(BlueprintNativeEvent)
-	void OnStackedWork(ALinkedWork * node);
+	void OnStackedWork(AWork * node);
 
-	void OnStackedWork_Implementation(ALinkedWork * node);
+	virtual void OnStackedWork_Implementation(AWork * node);
 
 private:
 	void removeWorkProc();
 
 private:
-	std::queue<ALinkedWork *> QueNodes;
+	std::queue<AWork *> QueNodes;
 };

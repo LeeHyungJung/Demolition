@@ -5,10 +5,12 @@
 #include "GameFramework/Actor.h"
 #include "private/LinkedNode.h"
 #include "private/DemolitionObjectProperty.h"
-#include "LinkedWork.generated.h"
+#include "Work.generated.h"
+
+class UDemolitionObjectProperty;
 
 UCLASS()
-class DEMOLITION_API ALinkedWork : public AActor, public CLinkedNode<ALinkedWork>
+class DEMOLITION_API AWork : public AActor, public CLinkedNode<AWork>
 {
 	GENERATED_BODY()
 
@@ -19,8 +21,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = LinkedList)
 	class UBoxComponent * BaseCollisionComponent;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Demolition)
-	class UDemolitionObjectProperty * Properies;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Demolition)
+	UDemolitionObjectProperty * DmProperties;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LinkedList)
 	bool bHead;
@@ -30,7 +32,7 @@ public:
 
 public:	
 	// Sets default values for this actor's properties
-	ALinkedWork();
+	AWork();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -38,16 +40,24 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	bool CheckCanBeChild(ALinkedWork * node);
+	bool CheckCanBeChild(AWork * node);
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Work")
+	void OnBeWorked(UDemolitionObjectProperty * Properties);
+
+	virtual void OnBeWorked_Implementation(UDemolitionObjectProperty * Properties);
 
 	UFUNCTION(BlueprintCallable, Category = LinkedList)
-	ALinkedWork * GetChildWork();
+	AWork * GetChildWork();
 
 	UFUNCTION(BlueprintCallable, Category = LinkedList)
-	void NotiyToRoot(ALinkedWork * node);
+	void NotiyToRoot(AWork * node);
 
 	UFUNCTION(BlueprintCallable, Category = LinkedList)
 	int32 GetIndex();
+
+	UFUNCTION(BlueprintCallable, Category = Work)
+	UDemolitionObjectProperty * GetDmProperties();
 
 	UFUNCTION()
 	void OnBeginOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
